@@ -8,9 +8,12 @@ Identité conservée : orange #E85D04, Caudex (titres), Montserrat (texte), logo
 ## Structure
 
 ```
-index.html        page unique
+index.html        page d'accueil
+bungalow.html     page détail d'un bungalow (bungalow.html?b=kelly)
 css/style.css     style, mobile d'abord (desktop à partir de 900px)
 js/main.js        animations et interactions
+js/bungalows.js   données des bungalows : photos, détails, prix
+js/bungalow.js    remplit la page détail et gère sa galerie
 assets/img/       photos en WebP (version 700px pour mobile + grande version)
 assets/video/     vidéo de vagues pour l'accueil (optionnelle)
 ```
@@ -31,7 +34,8 @@ Puis ouvrir http://localhost:5174
 | Toute la page | le fond passe du sable (matin) au pêche (coucher de soleil) puis au bleu nuit |
 | Histoire | la frise 2005 → aujourd'hui se trace au scroll |
 | Camp | galerie horizontale : au doigt sur mobile, glisser ou flèches sur desktop |
-| Bungalows | filtre par capacité, carrousel de photos dès 2 photos par bungalow |
+| Bungalows | filtre par capacité, chaque carte ouvre la page du bungalow |
+| Page bungalow | galerie à swiper au doigt, glisser à la souris, flèches, miniatures et clavier |
 | Accès | le trajet s'allume étape par étape au scroll |
 | Partout | apparitions douces, bouton WhatsApp flottant après l'accueil |
 
@@ -39,11 +43,11 @@ Le réglage « réduire les animations » du téléphone ou de l'ordinateur coup
 
 ## À faire avant la mise en ligne
 
-Rechercher `À REMPLACER` et `À VÉRIFIER` dans `index.html`.
+Rechercher `À REMPLACER`, `À VÉRIFIER` et `À COMPLÉTER` dans `index.html` et `js/bungalows.js`.
 
 1. **Photo de surf** pour la carte Surf (aucune sur l'ancien site).
 2. **3 vrais avis clients**, avec leur accord.
-3. **Photos des bungalows** : vérifier avec le client quelle photo va avec quel bungalow. Pour un carrousel, ajouter d'autres `<img>` dans `.slides`.
+3. **Photos et équipements des bungalows** : vérifier avec le client quelle photo va avec quel bungalow, puis ajouter les photos de chaque bungalow dans `js/bungalows.js` (elles remplacent les emplacements « à ajouter » de la galerie). Les équipements (salle de bain, électricité…) se complètent au même endroit. Les prix sont écrits à la fois dans `index.html` et `js/bungalows.js`.
 4. **Carte** : la carte de l'ancien site pointait près de Brazzaville. Mettre les coordonnées exactes du resort dans `data-map-src` (ex. `q=-3.9,11.4`).
 5. **Numéro WhatsApp** : `242055338959` est utilisé partout (constante `WHATSAPP` dans `js/main.js` et liens dans `index.html`). La bio Instagram mentionne un second numéro.
 6. **Vidéo d'accueil (optionnel)** : boucle de vagues de 5 s, muette, moins de 1,5 Mo, puis ajouter `data-video="assets/video/vagues.mp4"` sur `.hero-media`. Elle ne se charge jamais sur mobile.
