@@ -37,6 +37,8 @@
     initRoute();
     initMap();
     initHeroVideo();
+    initReturnToCard();
+    initLightbox();
   });
 
   /* ---------- Accueil : lettres une par une ---------- */
@@ -321,6 +323,170 @@
     v.src = media.dataset.video;
     v.addEventListener('canplay', function () { media.classList.add('is-playing'); v.play().catch(function () {}); }, { once: true });
     media.appendChild(v);
+  }
+
+  /* ---------- Retour depuis la page d'un bungalow : revenir sur sa carte ---------- */
+  // Le navigateur restaure normalement la position ; si ce n'est pas le cas
+  // (retour du téléphone sans cache), on replace la carte cliquée à l'écran.
+  function initReturnToCard() {
+    var cards = document.querySelectorAll('.bungalow[id]');
+    if (!cards.length) return;
+    cards.forEach(function (card) {
+      card.querySelector('.b-link').addEventListener('click', function () {
+        try { sessionStorage.setItem('noumbi-card', card.id); } catch (e) {}
+      });
+    });
+    window.addEventListener('pageshow', function (e) {
+      var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+      if (e.persisted || !nav || nav.type !== 'back_forward') return;
+      var id = null;
+      try { id = sessionStorage.getItem('noumbi-card'); } catch (err) {}
+      var card = id && document.getElementById(id);
+      if (!card) return;
+      setTimeout(function () {
+        var r = card.getBoundingClientRect();
+        if (r.bottom < 80 || r.top > window.innerHeight - 80) card.scrollIntoView({ block: 'center', behavior: 'instant' });
+      }, 60);
+    });
+  }
+
+  /* ---------- Photos en plein écran (galerie du camp, galerie d'un bungalow) ---------- */
+  function initLightbox() {
+    var groups = [
+      { root: document.querySelector('.gallery'), items: 'figure' },
+      { root: document.querySelector('.b-slider'), items: '.b-slide' }
+    ].filter(function (g) { return g.root; });
+    if (!groups.length) return;
+
+    var ARROW = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="';
+    var lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.hidden = true;
+    lb.tabIndex = -1;
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Photos en plein écran');
+    lb.innerHTML =
+      '<div class="lb-track"></div>' +
+      '<p class="lb-count" aria-live="polite"></p>' +
+      '<p class="lb-caption"></p>' +
+      '<button type="button" class="lb-btn lb-prev" aria-label="Photo précédente">' + ARROW + 'M19 12H5M11 6l-6 6 6 6"/></svg></button>' +
+      '<button type="button" class="lb-btn lb-next" aria-label="Photo suivante">' + ARROW + 'M5 12h14M13 6l6 6-6 6"/></svg></button>' +
+      '<button type="button" class="lb-btn lb-close" aria-label="Fermer">' + ARROW + 'M6 6l12 12M18 6 6 18"/></svg></button>';
+    document.body.appendChild(lb);
+
+    var track = lb.querySelector('.lb-track');
+    var count = lb.querySelector('.lb-count');
+    var caption = lb.querySelector('.lb-caption');
+    var prev = lb.querySelector('.lb-prev');
+    var next = lb.querySelector('.lb-next');
+    var closeBtn = lb.querySelector('.lb-close');
+    var group = null, photos = [], current = 0, lastFocus = null;
+
+    function items(g) {
+      return Array.prototype.filter.call(g.root.querySelectorAll(g.items), function (it) { return it.querySelector('img'); });
+    }
+    // grande version d'une image : la plus large de son srcset
+    function largest(img) {
+      var best = img.src, w = 0;
+      (img.getAttribute('srcset') || '').split(',').forEach(function (c) {
+        var p = c.trim().split(/\s+/);
+        if (parseInt(p[1], 10) > w) { w = parseInt(p[1], 10); best = p[0]; }
+      });
+      return best;
+    }
+
+    groups.forEach(function (g) {
+      g.root.classList.add('has-lightbox');
+      var downX = 0;
+      g.root.addEventListener('pointerdown', function (e) { downX = e.clientX; });
+      g.root.addEventListener('click', function (e) {
+        if (Math.abs(e.clientX - downX) > 6) return; // c'était un glisser, pas un clic
+        var item = e.target.closest(g.items);
+        var i = item ? items(g).indexOf(item) : -1;
+        if (i >= 0) open(g, i);
+      });
+      g.root.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter') return;
+        var left = g.root.getBoundingClientRect().left;
+        var list = items(g);
+        var i = 0;
+        while (i < list.length - 1 && list[i].getBoundingClientRect().right <= left + 8) i++;
+        open(g, i);
+      });
+    });
+
+    function open(g, index) {
+      group = g;
+      photos = items(g).map(function (it) { return it.querySelector('img'); });
+      track.innerHTML = '';
+      photos.forEach(function (img, i) {
+        var slide = document.createElement('figure');
+        slide.className = 'lb-slide';
+        var big = document.createElement('img');
+        var srcset = img.getAttribute('srcset');
+        if (srcset) { big.srcset = srcset; big.sizes = '100vw'; }
+        big.src = largest(img);
+        big.alt = img.alt;
+        if (Math.abs(i - index) > 1) big.loading = 'lazy';
+        slide.appendChild(big);
+        track.appendChild(slide);
+      });
+      lastFocus = document.activeElement;
+      lb.hidden = false;
+      root.classList.add('lb-open');
+      track.scrollLeft = track.clientWidth * index;
+      update();
+      closeBtn.focus({ preventScroll: true });
+      // le bouton retour du téléphone ferme le plein écran au lieu de quitter la page
+      history.pushState({ lightbox: true }, '');
+    }
+
+    function close(fromHistory) {
+      if (lb.hidden) return;
+      if (!fromHistory && history.state && history.state.lightbox) { history.back(); return; }
+      lb.hidden = true;
+      root.classList.remove('lb-open');
+      // la galerie de la page se cale sur la dernière photo regardée
+      var list = items(group);
+      if (list[current]) group.root.scrollLeft = list[current].offsetLeft - list[0].offsetLeft;
+      track.innerHTML = '';
+      if (lastFocus) lastFocus.focus({ preventScroll: true });
+    }
+
+    function update() {
+      current = Math.round(track.scrollLeft / track.clientWidth) || 0;
+      count.textContent = (current + 1) + ' / ' + photos.length;
+      caption.textContent = photos[current] ? photos[current].alt : '';
+      prev.hidden = next.hidden = photos.length < 2;
+      prev.disabled = current === 0;
+      next.disabled = current === photos.length - 1;
+    }
+    function go(i) {
+      i = Math.max(0, Math.min(photos.length - 1, i));
+      track.scrollTo({ left: track.clientWidth * i, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    track.addEventListener('scroll', update, { passive: true });
+    prev.addEventListener('click', function () { go(current - 1); });
+    next.addEventListener('click', function () { go(current + 1); });
+    closeBtn.addEventListener('click', function () { close(); });
+    // un clic à côté de la photo ferme aussi
+    track.addEventListener('click', function (e) { if (e.target.classList.contains('lb-slide')) close(); });
+    window.addEventListener('popstate', function () { close(true); });
+    window.addEventListener('resize', function () { if (!lb.hidden) track.scrollLeft = track.clientWidth * current; });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); go(current - 1); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); go(current + 1); }
+      else if (e.key === 'Tab') {
+        // garde le focus dans le plein écran
+        var btns = [closeBtn, prev, next].filter(function (b) { return !b.hidden && !b.disabled; });
+        var i = btns.indexOf(document.activeElement);
+        e.preventDefault();
+        btns[(i + (e.shiftKey ? btns.length - 1 : 1)) % btns.length].focus();
+      }
+    });
   }
 
   /* ---------- Utilitaire : progression 0 → 1 d'un élément pendant le scroll ---------- */

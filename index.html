@@ -113,11 +113,11 @@
       <div class="gallery-wrap">
         <div class="gallery" tabindex="0" aria-label="Galerie photos du camp, faire défiler horizontalement">
           <figure class="g-wide"><img src="assets/img/terrasse-700.webp" srcset="assets/img/terrasse-700.webp 700w, assets/img/terrasse.webp 1400w" sizes="(min-width: 900px) 660px, 85vw" alt="Terrasse en bois face à l'océan" loading="lazy"></figure>
-          <figure class="g-tall"><img src="assets/img/cabane-arbre-700.webp" alt="Cabane perchée au toit vert" loading="lazy"></figure>
+          <figure class="g-tall"><img src="assets/img/cabane-arbre-700.webp" srcset="assets/img/cabane-arbre-700.webp 700w, assets/img/cabane-arbre.webp 1200w" sizes="(min-width: 900px) 345px, 220px" alt="Cabane perchée au toit vert" loading="lazy"></figure>
           <figure class="g-wide"><img src="assets/img/camp-700.webp" srcset="assets/img/camp-700.webp 700w, assets/img/camp.webp 1200w" sizes="(min-width: 900px) 660px, 85vw" alt="Bungalow sur le sable, sous les arbres" loading="lazy"></figure>
-          <figure class="g-tall"><img src="assets/img/bungalow-couleurs-700.webp" alt="Fenêtre colorée d'un bungalow" loading="lazy"></figure>
+          <figure class="g-tall"><img src="assets/img/bungalow-couleurs-700.webp" srcset="assets/img/bungalow-couleurs-700.webp 700w, assets/img/bungalow-couleurs.webp 1200w" sizes="(min-width: 900px) 345px, 220px" alt="Fenêtre colorée d'un bungalow" loading="lazy"></figure>
           <figure class="g-wide"><img src="assets/img/chambre-700.webp" srcset="assets/img/chambre-700.webp 700w, assets/img/chambre.webp 1024w" sizes="(min-width: 900px) 660px, 85vw" alt="Chambre avec moustiquaire et bois naturel" loading="lazy"></figure>
-          <figure class="g-tall"><img src="assets/img/cabane-sable-700.webp" alt="Cabane en bois sur pilotis" loading="lazy"></figure>
+          <figure class="g-tall"><img src="assets/img/cabane-sable-700.webp" srcset="assets/img/cabane-sable-700.webp 700w, assets/img/cabane-sable.webp 1200w" sizes="(min-width: 900px) 345px, 220px" alt="Cabane en bois sur pilotis" loading="lazy"></figure>
         </div>
         <div class="gallery-nav">
           <button type="button" class="round-btn" data-dir="-1" aria-label="Photos précédentes"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
@@ -182,7 +182,7 @@
           Les photos de la galerie se gèrent dans js/bungalows.js, la carte garde une seule photo.
         -->
         <ul class="bungalows" role="list">
-          <li class="bungalow reveal" data-cap="2" data-name="Kelly">
+          <li class="bungalow reveal" id="b-kelly" data-cap="2" data-name="Kelly">
             <div class="slides"><img src="assets/img/camp-700.webp" alt="Bungalow Kelly" loading="lazy" width="700" height="466"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">
@@ -193,7 +193,7 @@
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Kelly</a>
             </div>
           </li>
-          <li class="bungalow reveal" data-cap="2" data-name="Chad">
+          <li class="bungalow reveal" id="b-chad" data-cap="2" data-name="Chad">
             <div class="slides"><img src="assets/img/chambre-700.webp" alt="Bungalow Chad" loading="lazy" width="700" height="466"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">
@@ -204,7 +204,7 @@
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Chad</a>
             </div>
           </li>
-          <li class="bungalow reveal" data-cap="6" data-name="Le Wallys">
+          <li class="bungalow reveal" id="b-le-wallys" data-cap="6" data-name="Le Wallys">
             <div class="slides"><img src="assets/img/cabane-arbre-700.webp" alt="Bungalow Le Wallys" loading="lazy" width="700" height="700"></div>
             <span class="cap-badge">6 personnes</span>
             <div class="b-body">
@@ -215,7 +215,7 @@
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Le Wallys</a>
             </div>
           </li>
-          <li class="bungalow reveal" data-cap="4" data-name="Bali">
+          <li class="bungalow reveal" id="b-bali" data-cap="4" data-name="Bali">
             <div class="slides"><img src="assets/img/bungalow-couleurs-700.webp" alt="Bungalow Bali" loading="lazy" width="700" height="933"></div>
             <span class="cap-badge">4 personnes</span>
             <div class="b-body">
@@ -226,7 +226,7 @@
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Bali</a>
             </div>
           </li>
-          <li class="bungalow reveal" data-cap="2" data-name="Nsuini">
+          <li class="bungalow reveal" id="b-nsuini" data-cap="2" data-name="Nsuini">
             <div class="slides"><img src="assets/img/cabane-sable-700.webp" alt="Bungalow Nsuini" loading="lazy" width="700" height="933"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">

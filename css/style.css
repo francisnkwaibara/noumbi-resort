@@ -271,6 +271,7 @@ button { font: inherit; color: inherit; }
   transition: opacity .35s var(--ease), transform .35s var(--ease);
 }
 .bungalow.is-hiding { opacity: 0; transform: scale(.96); }
+.bungalow { scroll-margin-top: 96px; } /* arrivée par index.html#b-… : la carte ne passe pas sous l'en-tête */
 .bungalow[hidden] { display: none; }
 .slides { position: relative; aspect-ratio: 4 / 3; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .slides::-webkit-scrollbar { display: none; }
@@ -445,6 +446,38 @@ button { font: inherit; color: inherit; }
 .foot-brand { display: flex; align-items: center; gap: 12px; }
 .foot-brand img { width: 40px; height: 40px; }
 .foot-word { font-family: var(--f-title); font-size: clamp(96px, 19vw, 280px); line-height: 1; color: #16302E; text-align: center; white-space: nowrap; margin-bottom: -.18em; }
+
+/* ---------- Photos en plein écran ---------- */
+.has-lightbox img { cursor: zoom-in; }
+.lb-open, .lb-open body { overflow: hidden; }
+.lb { position: fixed; inset: 0; z-index: 100; background: rgba(12, 10, 8, .96); color: #fff; animation: lb-in .25s ease; }
+.lb[hidden] { display: none; }
+.lb:focus { outline: none; }
+@keyframes lb-in { from { opacity: 0; } }
+.lb-track { position: absolute; inset: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior: contain; }
+.lb-track::-webkit-scrollbar { display: none; }
+.lb-slide { flex: 0 0 100%; height: 100%; scroll-snap-align: center; scroll-snap-stop: always; display: flex; align-items: center; justify-content: center; padding: 72px 0 80px; }
+.lb-slide img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+.lb-count { position: absolute; top: 26px; left: 20px; font-size: 14px; font-weight: 600; letter-spacing: .04em; }
+.lb-caption { position: absolute; left: 20px; right: 20px; bottom: calc(24px + env(safe-area-inset-bottom)); text-align: center; font-size: 14px; color: rgba(255, 255, 255, .75); }
+.lb-btn {
+  position: absolute; width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, .14); color: #fff; transition: background-color .2s, opacity .2s;
+}
+.lb-btn:hover { background: rgba(255, 255, 255, .28); }
+.lb-btn[hidden] { display: none; }
+.lb-close { top: 14px; right: 14px; }
+.lb-prev, .lb-next { display: none; top: 50%; transform: translateY(-50%); width: 56px; height: 56px; }
+.lb-btn:disabled { opacity: 0; pointer-events: none; }
+.lb-prev { left: 24px; }
+.lb-next { right: 24px; }
+@media (min-width: 900px) {
+  .lb-slide { padding: 80px 112px 88px; }
+  .lb-prev:not([hidden]), .lb-next:not([hidden]) { display: inline-flex; }
+  .lb-close { top: 20px; right: 24px; }
+  .lb-count { top: 32px; left: 32px; }
+}
 
 /* ---------- Bouton WhatsApp flottant ---------- */
 .wa-float {

@@ -33,9 +33,10 @@ Puis ouvrir http://localhost:5174
 | Accueil | lettres du titre une par une, vague orange qui se dessine, léger zoom arrière de la photo |
 | Toute la page | le fond passe du sable (matin) au pêche (coucher de soleil) puis au bleu nuit |
 | Histoire | la frise 2005 → aujourd'hui se trace au scroll |
-| Camp | galerie horizontale : au doigt sur mobile, glisser ou flèches sur desktop |
-| Bungalows | filtre par capacité, chaque carte ouvre la page du bungalow |
-| Page bungalow | galerie à swiper au doigt, glisser à la souris, flèches, miniatures et clavier |
+| Camp | galerie horizontale : au doigt sur mobile, glisser ou flèches sur desktop. Clic sur une photo : plein écran |
+| Bungalows | filtre par capacité, chaque carte ouvre la page du bungalow. Le retour ramène sur la carte cliquée |
+| Page bungalow | galerie à swiper au doigt, glisser à la souris, flèches, miniatures et clavier. Clic sur une photo : plein écran |
+| Plein écran | swipe ou flèches, fermeture par la croix, Échap, un clic à côté de la photo ou le bouton retour du téléphone |
 | Accès | le trajet s'allume étape par étape au scroll |
 | Partout | apparitions douces, bouton WhatsApp flottant après l'accueil |
 

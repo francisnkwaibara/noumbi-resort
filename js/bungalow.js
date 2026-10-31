@@ -44,7 +44,24 @@
 
   buildGallery(b.photos);
   buildOthers();
+  initBack();
   page.hidden = false;
+
+  /* ---------- Retour : revenir sur la carte du bungalow dans l'accueil ---------- */
+  function initBack() {
+    var back = document.querySelector('.back-link');
+    back.href = 'index.html#b-' + b.id;
+    back.addEventListener('click', function (e) {
+      // Arrivé depuis l'accueil : l'historique remet la page exactement où elle était.
+      // Sinon (lien partagé, autre bungalow…), le lien mène directement à la carte.
+      var ref;
+      try { ref = new URL(document.referrer); } catch (err) { return; }
+      if (ref.origin === location.origin && /\/(index\.html)?$/.test(ref.pathname) && history.length > 1) {
+        e.preventDefault();
+        history.back();
+      }
+    });
+  }
 
   /* ---------- Galerie : swipe au doigt, glisser à la souris, flèches, clavier ---------- */
   function buildGallery(photos) {
