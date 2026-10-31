@@ -73,6 +73,7 @@
         thumb.classList.add('is-empty');
         thumb.innerHTML = CAMERA;
       } else {
+        if (p.h > p.w) slide.classList.add('is-portrait');
         slide.appendChild(makeImg(p, i === 0, '(min-width: 900px) 60vw, 100vw'));
         var t = document.createElement('img');
         t.src = p.small; t.alt = ''; t.loading = 'lazy';

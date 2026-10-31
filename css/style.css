@@ -319,6 +319,9 @@ button { font: inherit; color: inherit; }
 .b-slider.is-dragging { scroll-snap-type: none; cursor: grabbing; }
 .b-slide { flex: 0 0 100%; height: 100%; scroll-snap-align: start; }
 .b-slide img { width: 100%; height: 100%; object-fit: cover; }
+/* Photo verticale : affichée en entier sur fond sombre plutôt que recadrée */
+.b-slide.is-portrait { background: #2A2620; }
+.b-slide.is-portrait img { object-fit: contain; }
 .b-slide.placeholder { flex-direction: column; gap: 10px; }
 .b-count { position: absolute; left: 12px; bottom: 12px; padding: 4px 12px; border-radius: 999px; background: rgba(30, 26, 22, .7); color: #fff; font-size: 13px; font-weight: 600; }
 .b-dots { right: 8px; bottom: 8px; }
@@ -370,7 +373,8 @@ button { font: inherit; color: inherit; }
   .b-detail { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(320px, 1fr); gap: clamp(32px, 4vw, 64px); align-items: start; }
   .b-slider { aspect-ratio: 3 / 2; cursor: grab; }
   .b-arrow { display: inline-flex; }
-  .b-thumbs { display: flex; gap: 10px; margin-top: 12px; }
+  .b-thumbs { display: flex; gap: 10px; margin-top: 12px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 4px; }
+  .b-thumb { flex: 0 0 auto; }
   .b-thumb {
     width: 96px; height: 72px; padding: 0; border: 2px solid transparent; border-radius: 12px; overflow: hidden; cursor: pointer;
     background: #E4DACB; color: var(--ink-mute); display: flex; align-items: center; justify-content: center; transition: border-color .25s;
