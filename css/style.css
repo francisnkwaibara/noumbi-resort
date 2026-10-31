@@ -444,6 +444,8 @@ button { font: inherit; color: inherit; }
 .foot-cols a:hover { color: var(--accent-night); }
 .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; padding-top: 24px; border-top: 1px solid rgba(243, 237, 228, .15); font-size: 13px; color: var(--light-mute); }
 .foot-brand { display: flex; align-items: center; gap: 12px; }
+.foot-credit a { color: var(--light); text-underline-offset: 3px; transition: color .2s; }
+.foot-credit a:hover { color: var(--accent-night); }
 .foot-brand img { width: 40px; height: 40px; }
 .foot-word { font-family: var(--f-title); font-size: clamp(96px, 19vw, 280px); line-height: 1; color: #16302E; text-align: center; white-space: nowrap; margin-bottom: -.18em; }
 
