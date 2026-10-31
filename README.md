@@ -45,12 +45,11 @@ Le réglage « réduire les animations » du téléphone ou de l'ordinateur coup
 
 Rechercher `À REMPLACER`, `À VÉRIFIER` et `À COMPLÉTER` dans `index.html` et `js/bungalows.js`.
 
-1. **Photo de surf** pour la carte Surf (aucune sur l'ancien site).
-2. **3 vrais avis clients**, avec leur accord.
-3. **Photos et équipements des bungalows** : vérifier avec le client quelle photo va avec quel bungalow, puis ajouter les photos de chaque bungalow dans `js/bungalows.js` (elles remplacent les emplacements « à ajouter » de la galerie). Les équipements (salle de bain, électricité…) se complètent au même endroit. Les prix sont écrits à la fois dans `index.html` et `js/bungalows.js`.
-4. **Carte** : la carte de l'ancien site pointait près de Brazzaville. Mettre les coordonnées exactes du resort dans `data-map-src` (ex. `q=-3.9,11.4`).
-5. **Numéro WhatsApp** : `242055338959` est utilisé partout (constante `WHATSAPP` dans `js/main.js` et liens dans `index.html`). La bio Instagram mentionne un second numéro.
-6. **Vidéo d'accueil (optionnel)** : boucle de vagues de 5 s, muette, moins de 1,5 Mo, puis ajouter `data-video="assets/video/vagues.mp4"` sur `.hero-media`. Elle ne se charge jamais sur mobile.
+1. **3 vrais avis clients**, avec leur accord.
+2. **Photos et équipements des bungalows** : l'attribution photo ↔ bungalow est confirmée par l'ancien site Bubble (une seule photo par bungalow). Ajouter les photos de chaque bungalow dans `js/bungalows.js` (elles remplacent les emplacements « à ajouter » de la galerie). Les équipements (salle de bain, électricité…) se complètent au même endroit. Les prix sont écrits à la fois dans `index.html` et `js/bungalows.js`.
+3. **Carte** : la carte de l'ancien site pointait près de Brazzaville. Mettre les coordonnées exactes du resort dans `data-map-src` (ex. `q=-3.9,11.4`).
+4. **Numéro WhatsApp** : `242055338959` est utilisé partout (constante `WHATSAPP` dans `js/main.js` et liens dans `index.html`). La bio Instagram mentionne un second numéro.
+5. **Vidéo d'accueil (optionnel)** : boucle de vagues de 5 s, muette, moins de 1,5 Mo, puis ajouter `data-video="assets/video/vagues.mp4"` sur `.hero-media`. Elle ne se charge jamais sur mobile.
    ```bash
    ffmpeg -i source.mp4 -t 5 -an -vf "scale=1600:-2" -c:v libx264 -crf 28 -preset slow -movflags +faststart assets/video/vagues.mp4
    ```

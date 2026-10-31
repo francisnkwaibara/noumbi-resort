@@ -8,7 +8,6 @@
    Une ligne { placeholder: '…' } affiche un emplacement vide : la supprimer
    dès qu'une vraie photo la remplace.
 
-   À VÉRIFIER avec le client : quelle photo correspond à quel bungalow.
    À COMPLÉTER : équipements de chaque bungalow (salle de bain, électricité,
    moustiquaire, terrasse…), à ajouter dans "details" une fois confirmés.
    Les prix et descriptions sont aussi écrits dans index.html : modifier les deux.
