@@ -81,7 +81,8 @@
     function update() {
       var y = window.scrollY;
       var heroH = hero ? hero.offsetHeight : 600;
-      header.classList.toggle('is-scrolled', y > heroH - 100);
+      // sans accueil plein écran (page bungalow), l'en-tête reste sur fond clair
+      header.classList.toggle('is-scrolled', !hero || y > heroH - 100);
       var menuOpen = document.querySelector('.nav.is-open');
       header.classList.toggle('is-hidden', !menuOpen && y > heroH && y > last + 2);
       if (y < last - 2) header.classList.remove('is-hidden');
@@ -205,14 +206,16 @@
   }
 
   /* ---------- Réservation : message WhatsApp prérempli ---------- */
+  // Cartes de l'accueil et page bungalow : tout bloc avec data-name
   function initBookingLinks() {
-    document.querySelectorAll('.bungalow').forEach(function (card) {
-      var a = card.querySelector('.wa-book');
+    document.querySelectorAll('[data-name]').forEach(function (card) {
       var name = card.dataset.name;
       var cap = card.dataset.cap;
       var msg = 'Bonjour Noumbi Resort, je souhaite réserver le bungalow ' + name +
         ' (' + cap + ' pers.) du … au …. Nous serons … personnes. Merci !';
-      a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+      card.querySelectorAll('.wa-book').forEach(function (a) {
+        a.href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(msg);
+      });
     });
   }
 

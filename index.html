@@ -85,7 +85,7 @@
     <section id="histoire" class="section" data-bg="#F3EDE4" aria-labelledby="h-histoire">
       <div class="wrap split">
         <figure class="patrick reveal">
-          <img src="assets/img/patrick.webp" srcset="assets/img/patrick-700.webp 700w, assets/img/patrick.webp 1169w" sizes="(min-width: 900px) 520px, 300px" alt="Portrait de Patrick, fondateur de Noumbi Resort" width="1169" height="1066" loading="lazy">
+          <img src="assets/img/patrick.webp" srcset="assets/img/patrick-700.webp 700w, assets/img/patrick.webp 1169w" sizes="(min-width: 900px) 420px, 300px" alt="Portrait de Patrick, fondateur de Noumbi Resort" width="1169" height="1066" loading="lazy">
           <figcaption>Patrick, fondateur</figcaption>
         </figure>
         <div class="split-text">
@@ -179,8 +179,8 @@
         </div>
 
         <!--
-          Pour ajouter des photos à un bungalow : ajouter d'autres <img> dans .slides.
-          Les points de navigation apparaissent automatiquement dès 2 photos.
+          Toute la carte mène à la page du bungalow (bungalow.html?b=…).
+          Les photos de la galerie se gèrent dans js/bungalows.js, la carte garde une seule photo.
           À VÉRIFIER avec le client : quelle photo correspond à quel bungalow.
         -->
         <ul class="bungalows" role="list">
@@ -188,9 +188,10 @@
             <div class="slides"><img src="assets/img/camp-700.webp" alt="Bungalow Kelly" loading="lazy" width="700" height="466"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">
-              <h3>Kelly</h3>
+              <h3><a class="b-link" href="bungalow.html?b=kelly">Kelly</a></h3>
               <p>Une chambre, un lit double.</p>
               <p class="price"><strong>30 000 FCFA</strong><span>la première nuit, puis 20 000 FCFA</span></p>
+              <span class="b-see">Voir les photos et détails <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Kelly</a>
             </div>
           </li>
@@ -198,9 +199,10 @@
             <div class="slides"><img src="assets/img/chambre-700.webp" alt="Bungalow Chad" loading="lazy" width="700" height="466"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">
-              <h3>Chad</h3>
+              <h3><a class="b-link" href="bungalow.html?b=chad">Chad</a></h3>
               <p>Une chambre, un lit double.</p>
               <p class="price"><strong>30 000 FCFA</strong><span>la première nuit, puis 20 000 FCFA</span></p>
+              <span class="b-see">Voir les photos et détails <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Chad</a>
             </div>
           </li>
@@ -208,9 +210,10 @@
             <div class="slides"><img src="assets/img/cabane-arbre-700.webp" alt="Bungalow Le Wallys" loading="lazy" width="700" height="700"></div>
             <span class="cap-badge">6 personnes</span>
             <div class="b-body">
-              <h3>Le Wallys</h3>
+              <h3><a class="b-link" href="bungalow.html?b=le-wallys">Le Wallys</a></h3>
               <p>Duplex à étage : une chambre parents à l'étage et un espace enfants avec deux lits superposés.</p>
               <p class="price"><strong>100 000 FCFA</strong><span>la nuit</span></p>
+              <span class="b-see">Voir les photos et détails <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Le Wallys</a>
             </div>
           </li>
@@ -218,9 +221,10 @@
             <div class="slides"><img src="assets/img/bungalow-couleurs-700.webp" alt="Bungalow Bali" loading="lazy" width="700" height="933"></div>
             <span class="cap-badge">4 personnes</span>
             <div class="b-body">
-              <h3>Bali</h3>
+              <h3><a class="b-link" href="bungalow.html?b=bali">Bali</a></h3>
               <p>Une chambre, deux lits doubles.</p>
               <p class="price"><strong>30 000 FCFA</strong><span>la première nuit, puis 20 000 FCFA</span></p>
+              <span class="b-see">Voir les photos et détails <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Bali</a>
             </div>
           </li>
@@ -228,9 +232,10 @@
             <div class="slides"><img src="assets/img/cabane-sable-700.webp" alt="Bungalow Nsuini" loading="lazy" width="700" height="933"></div>
             <span class="cap-badge">2 personnes</span>
             <div class="b-body">
-              <h3>Nsuini</h3>
+              <h3><a class="b-link" href="bungalow.html?b=nsuini">Nsuini</a></h3>
               <p>Une chambre, un lit double.</p>
               <p class="price"><strong>30 000 FCFA</strong><span>la première nuit, puis 20 000 FCFA</span></p>
+              <span class="b-see">Voir les photos et détails <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
               <a class="btn-pill btn-dark btn-block wa-book" href="https://wa.me/242055338959" target="_blank" rel="noopener">Réserver Nsuini</a>
             </div>
           </li>
