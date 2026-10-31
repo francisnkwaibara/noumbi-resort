@@ -26,12 +26,12 @@
   --f-body: 'Montserrat', system-ui, sans-serif;
 
   --gutter: 20px;
-  --section-y: 48px;
+  --section-y: 28px;
   --radius: 20px;
   --ease: cubic-bezier(.2, .8, .2, 1);
 }
 @media (min-width: 900px) {
-  :root { --gutter: clamp(40px, 5vw, 72px); --section-y: clamp(72px, 6vw, 104px); }
+  :root { --gutter: clamp(40px, 5vw, 72px); --section-y: clamp(48px, 4vw, 56px); }
 }
 
 /* ---------- Base ---------- */
@@ -173,7 +173,7 @@ button { font: inherit; color: inherit; }
 .section-line { border-top: 1px solid rgba(30, 26, 22, .12); }
 .section-night { background: var(--night); color: var(--light); }
 .section-night .kicker, .section-night .h2 em { color: var(--accent-night); }
-.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 64px; margin-bottom: 40px; }
+.section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px 64px; margin-bottom: 28px; }
 
 /* Fond qui change au fil de la journée : main.js pose .bg-sync sur <html>,
    les sections deviennent transparentes et c'est le fond du body qui fond d'une couleur à l'autre. */
@@ -181,9 +181,9 @@ button { font: inherit; color: inherit; }
 .bg-sync main > .section, .bg-sync .section-white, .bg-sync .section-sunset, .bg-sync .section-night { background: transparent; }
 
 /* ---------- 09:00 · Histoire ---------- */
-.split { display: flex; flex-direction: column; gap: 40px; }
-.patrick { position: relative; max-width: 260px; width: 100%; margin-inline: auto; }
-.patrick img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 240px 240px 16px 16px; }
+.split { display: flex; flex-direction: column; gap: 28px; }
+.patrick { position: relative; max-width: 220px; width: 100%; margin-inline: auto; }
+.patrick img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50% 50% 16px 16px / 50% 50% 16px 16px; }
 .patrick figcaption { position: absolute; left: 20px; bottom: 20px; background: var(--sand); padding: 10px 16px; border-radius: 999px; font-family: var(--f-title); font-size: 17px; }
 .split-text { display: flex; flex-direction: column; gap: 24px; }
 .split-text .kicker { margin-bottom: -4px; }
@@ -203,7 +203,7 @@ button { font: inherit; color: inherit; }
 .timeline .year { font-family: var(--f-title); font-size: 28px; color: var(--ink); line-height: 1.2; }
 @media (min-width: 900px) {
   .split { flex-direction: row; align-items: center; gap: clamp(48px, 6vw, 88px); }
-  .patrick { flex: 0 1 360px; max-width: 360px; margin-inline: 0; }
+  .patrick { flex: 0 1 300px; max-width: 300px; margin-inline: 0; }
   .split-text { flex: 1.3 1 0; }
   .timeline { grid-template-columns: repeat(3, 1fr); border-top: 0; }
   .timeline::before { left: 0; right: 0; top: 0; bottom: auto; width: auto; height: 2px; transform-origin: left; transform: scaleX(var(--progress, 1)); }
