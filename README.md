@@ -46,7 +46,7 @@ Le réglage « réduire les animations » du téléphone ou de l'ordinateur coup
 Rechercher `À REMPLACER`, `À VÉRIFIER` et `À COMPLÉTER` dans `index.html` et `js/bungalows.js`.
 
 1. **3 vrais avis clients**, avec leur accord.
-2. **Photos et équipements des bungalows** : l'attribution photo ↔ bungalow est confirmée par l'ancien site Bubble (une seule photo par bungalow). Ajouter les photos de chaque bungalow dans `js/bungalows.js` (elles remplacent les emplacements « à ajouter » de la galerie). Les équipements (salle de bain, électricité…) se complètent au même endroit. Les prix sont écrits à la fois dans `index.html` et `js/bungalows.js`.
+2. **Photos et équipements des bungalows** : les galeries reprennent les photos de l'ancien site Bubble (3 à 6 par bungalow), gérées dans `js/bungalows.js`. À confirmer avec le client : la même photo de chambre sous les toits apparaît chez Chad et chez Le Wallys. Les équipements (salle de bain, électricité…) se complètent au même endroit. Les prix sont écrits à la fois dans `index.html` et `js/bungalows.js`.
 3. **Carte** : la carte de l'ancien site pointait près de Brazzaville. Mettre les coordonnées exactes du resort dans `data-map-src` (ex. `q=-3.9,11.4`).
 4. **Numéro WhatsApp** : `242055338959` est utilisé partout (constante `WHATSAPP` dans `js/main.js` et liens dans `index.html`). La bio Instagram mentionne un second numéro.
 5. **Vidéo d'accueil (optionnel)** : boucle de vagues de 5 s, muette, moins de 1,5 Mo, puis ajouter `data-video="assets/video/vagues.mp4"` sur `.hero-media`. Elle ne se charge jamais sur mobile.
