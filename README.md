@@ -55,6 +55,14 @@ Rechercher `À REMPLACER`, `À VÉRIFIER` et `À COMPLÉTER` dans `index.html` e
    ffmpeg -i source.mp4 -t 5 -an -vf "scale=1600:-2" -c:v libx264 -crf 28 -preset slow -movflags +faststart assets/video/vagues.mp4
    ```
 
+## Après chaque modification du CSS ou du JS
+
+Changer le numéro `?v=` des liens `css/style.css` et `js/*.js` dans `index.html` et `bungalow.html` (ex. `?v=20261031` → `?v=20261101`). Sinon les téléphones peuvent garder l'ancienne version en cache.
+
+```bash
+sed -i -E 's/\?v=[0-9]+/?v=20261101/g' index.html bungalow.html
+```
+
 ## Ajouter une photo
 
 ```bash
