@@ -29,7 +29,8 @@
   page.querySelector('.b-book-label').textContent = 'Réserver ' + b.name + ' sur WhatsApp';
   page.querySelectorAll('.b-price').forEach(function (p) {
     p.querySelector('strong').textContent = b.price;
-    p.querySelector('span').textContent = b.priceNote;
+    // la barre fixe du bas (mobile) garde seulement le début du tarif, le détail est au-dessus
+    p.querySelector('span').textContent = p.closest('.b-bar') ? b.priceNote.split(',')[0] : b.priceNote;
   });
 
   var facts = page.querySelector('.b-facts');
@@ -183,7 +184,7 @@
       var name = document.createElement('strong');
       name.textContent = o.name;
       var meta = document.createElement('span');
-      meta.textContent = o.cap + ' pers. · ' + o.price;
+      meta.textContent = o.cap + ' pers. · ' + o.price + (/par personne/.test(o.priceNote) ? ' / pers.' : '');
       body.appendChild(name);
       body.appendChild(meta);
       a.appendChild(media);

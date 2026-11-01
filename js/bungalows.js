@@ -26,12 +26,11 @@ window.BUNGALOWS = [
       ['Chambre', 'Une chambre'],
       ['Couchage', 'Un lit double']
     ],
-    price: '30 000 FCFA',
-    priceNote: 'la première nuit, puis 20 000 FCFA',
+    price: '40 000 FCFA',
+    priceNote: 'par personne la première nuit, puis 30 000 FCFA par personne les nuits suivantes',
     photos: [
-      { src: 'assets/img/camp.webp', small: 'assets/img/camp-700.webp', w: 1200, h: 800, alt: 'Bungalow Kelly sur le sable, sous les arbres' },
-      { src: 'assets/img/kelly-2.webp', small: 'assets/img/kelly-2-700.webp', w: 1400, h: 934, alt: 'Façade du bungalow Kelly, volets turquoise et terrasse en bois' },
-      { src: 'assets/img/kelly-3.webp', small: 'assets/img/kelly-3-700.webp', w: 914, h: 1200, alt: 'Planches de surf sur le sable, près du bungalow Kelly' }
+      { src: 'assets/img/kelly.webp', small: 'assets/img/kelly-700.webp', w: 1080, h: 810, alt: 'Bungalow Kelly en bois sur pilotis, toit turquoise, sous les arbres' },
+      { src: 'assets/img/kelly-terrasse.webp', small: 'assets/img/kelly-terrasse-700.webp', w: 1080, h: 810, alt: 'Terrasse couverte du bungalow Kelly, tapis bleus devant la porte vitrée' }
     ]
   },
   {
@@ -44,8 +43,8 @@ window.BUNGALOWS = [
       ['Chambre', 'Une chambre'],
       ['Couchage', 'Un lit double']
     ],
-    price: '30 000 FCFA',
-    priceNote: 'la première nuit, puis 20 000 FCFA',
+    price: '40 000 FCFA',
+    priceNote: 'par personne la première nuit, puis 30 000 FCFA par personne les nuits suivantes',
     photos: [
       { src: 'assets/img/chambre.webp', small: 'assets/img/chambre-700.webp', w: 1024, h: 684, alt: 'Chambre du bungalow Chad, avec moustiquaire et bois naturel' },
       { src: 'assets/img/chad-2.webp', small: 'assets/img/chad-2-700.webp', w: 1024, h: 768, alt: 'Terrasse du bungalow Chad avec fauteuils en bois, vue sur l\'océan' },
@@ -58,15 +57,15 @@ window.BUNGALOWS = [
     id: 'le-wallys',
     name: 'Le Wallys',
     cap: 6,
-    summary: 'Duplex à étage : une chambre parents à l\'étage et un espace enfants avec deux lits superposés.',
+    summary: 'Duplex à étage : un lit deux places à l\'étage et quatre lits en bas.',
     details: [
       ['Capacité', '6 personnes'],
       ['Configuration', 'Duplex à étage'],
-      ['Étage', 'Une chambre parents'],
-      ['Espace enfants', 'Deux lits superposés']
+      ['Étage', 'Un lit deux places'],
+      ['Rez-de-chaussée', 'Quatre lits']
     ],
-    price: '100 000 FCFA',
-    priceNote: 'la nuit',
+    price: '40 000 FCFA',
+    priceNote: 'par personne la première nuit, puis 30 000 FCFA par personne les nuits suivantes',
     photos: [
       { src: 'assets/img/cabane-arbre.webp', small: 'assets/img/cabane-arbre-700.webp', w: 1200, h: 1200, alt: 'Le Wallys, cabane perchée au toit vert' },
       { src: 'assets/img/wallys-2.webp', small: 'assets/img/wallys-2-700.webp', w: 720, h: 540, alt: 'Le Wallys vu de face, duplex sur pilotis avec escalier' },
@@ -86,8 +85,8 @@ window.BUNGALOWS = [
       ['Chambre', 'Une chambre'],
       ['Couchage', 'Deux lits doubles']
     ],
-    price: '30 000 FCFA',
-    priceNote: 'la première nuit, puis 20 000 FCFA',
+    price: '40 000 FCFA',
+    priceNote: 'par personne la première nuit, puis 30 000 FCFA par personne les nuits suivantes',
     photos: [
       { src: 'assets/img/bungalow-couleurs.webp', small: 'assets/img/bungalow-couleurs-700.webp', w: 1200, h: 1600, alt: 'Fenêtre colorée du bungalow Bali' },
       { src: 'assets/img/bali-2.webp', small: 'assets/img/bali-2-700.webp', w: 900, h: 1200, alt: 'Terrasse du bungalow Bali ouverte sur l\'océan' },
@@ -104,8 +103,8 @@ window.BUNGALOWS = [
       ['Chambre', 'Une chambre'],
       ['Couchage', 'Un lit double']
     ],
-    price: '30 000 FCFA',
-    priceNote: 'la première nuit, puis 20 000 FCFA',
+    price: '40 000 FCFA',
+    priceNote: 'par personne la première nuit, puis 30 000 FCFA par personne les nuits suivantes',
     photos: [
       { src: 'assets/img/cabane-sable.webp', small: 'assets/img/cabane-sable-700.webp', w: 1200, h: 1600, alt: 'Bungalow Nsuini, cabane en bois sur pilotis' },
       { src: 'assets/img/nsuini-2.webp', small: 'assets/img/nsuini-2-700.webp', w: 900, h: 1200, alt: 'Entrée du bungalow Nsuini et son allée de pierres' },
